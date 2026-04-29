@@ -5,5 +5,6 @@ const usuarioRoute = Router()
 
 usuarioRoute.post('/', usuarioController.criarUsuario)
 usuarioRoute.get('/', usuarioController.listarUsuarios)
+usuarioRoute.get('/:id', usuarioController.listar)
 
 export { usuarioRoute }

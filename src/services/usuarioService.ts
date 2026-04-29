@@ -1,6 +1,4 @@
-import { randomUUID } from "node:crypto";
 import type { CreateUsuarioDTO, UsuarioResponseDTO } from "../dtos/usuarioDTO";
-import type { Usuario } from "../entities/Usuario";
 import { usuarioRepository } from "../repositories/usuarioRepository";
 
 export const usuarioService = {
@@ -10,15 +8,11 @@ export const usuarioService = {
             throw new Error('Email já cadastrado')
         }
 
-        const novoUsuario: Usuario = {
-            id: randomUUID(),
+        const novoUsuario = await usuarioRepository.criarUsuario({
             nome: dados.nome,
             email: dados.email,
-            senha: dados.senha,
-            criadoEm: new Date()
-        }
-
-        await usuarioRepository.criarUsuario(novoUsuario)
+            senha: dados.senha
+        })
 
         return {
             id: novoUsuario.id,
@@ -28,7 +22,27 @@ export const usuarioService = {
         }
     },
 
-    async listar(): Promise<Usuario[]> {
-        return usuarioRepository.listarTodos()
+    async listarTodos(): Promise<UsuarioResponseDTO[]> {
+        const usuarios = await usuarioRepository.listarTodos()
+        return usuarios.map(u => ({
+            id: u.id,
+            nome: u.nome,
+            email: u.email,
+            criadoEm: u.criadoEm
+        }))
+    },
+
+    async listar(id: string): Promise<UsuarioResponseDTO> {
+        const usuario = await usuarioRepository.buscarPorID(id)
+        if (!usuario) {
+            throw new Error('Usuário não encontrado')
+        }
+
+        return {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            criadoEm: usuario.criadoEm
+        }
     }
 }
