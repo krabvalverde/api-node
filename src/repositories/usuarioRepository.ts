@@ -1,5 +1,5 @@
-import { prisma } from "../lib/prisma";
-import type { Usuario } from "../models/Usuario";
+import { prisma } from "../lib/prisma.js";
+import type { Usuario } from "../models/Usuario.js";
 
 export const usuarioRepository = {
     async criarUsuario(dados: Omit<Usuario, 'id' | 'criadoEm'>): Promise<Usuario> {
