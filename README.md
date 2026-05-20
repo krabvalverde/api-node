@@ -100,7 +100,7 @@ Exemplo de criação de produto:
 ### 1. Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/krabvalverde/api-node/edit/main/README.md
 cd api-node
 ```
 
@@ -161,4 +161,4 @@ Este projeto foi desenvolvido exclusivamente para estudo e prática. Ele não po
 
 ## Licença
 
-Projeto sem fins lucrativos, criado para fins educacionais.
+Projeto sem fins lucrativos, criado para fins educacionais sob MIT License.
