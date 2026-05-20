@@ -10,7 +10,7 @@ export const produtoRepository = {
     },
 
     async criarProduto(dados: Omit<Produto, 'id'> ): Promise<Produto> {
-        prisma.produto.create({
+        return await prisma.produto.create({
             data: dados,
         })
     }
