@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
-import type { CreateUsuarioDTO } from '../dtos/usuarioDTO'
-import { usuarioService } from '../services/usuarioService'
+import type { CreateUsuarioDTO } from '../dtos/usuarioDTO.js'
+import { usuarioService } from '../services/usuarioService.js'
 
 export const usuarioController = {
     async criarUsuario(req: Request, res: Response) {

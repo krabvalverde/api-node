@@ -16,3 +16,12 @@ model Usuario {
 
   @@map("usuarios")
 }
+
+model Produto {
+  id           String @id @default(uuid())
+  codigoBarras String @unique @map("codigo_barras")
+  descricao    String 
+  unidade      String
+
+  @@map("produtos")
+}

@@ -1,5 +1,6 @@
-import type { CreateUsuarioDTO, UsuarioResponseDTO } from "../dtos/usuarioDTO";
-import { usuarioRepository } from "../repositories/usuarioRepository";
+import type { CreateUsuarioDTO, UsuarioResponseDTO } from "../dtos/usuarioDTO.js";
+import { usuarioRepository } from "../repositories/usuarioRepository.js";
+import bcrypt from "bcrypt";
 
 export const usuarioService = {
     async criarUsuario(dados: CreateUsuarioDTO): Promise<UsuarioResponseDTO> {
@@ -8,10 +9,12 @@ export const usuarioService = {
             throw new Error('Email já cadastrado')
         }
 
+        const senhaHash = await bcrypt.hash(dados.senha, 10);
+
         const novoUsuario = await usuarioRepository.criarUsuario({
             nome: dados.nome,
             email: dados.email,
-            senha: dados.senha
+            senha: senhaHash
         })
 
         return {
