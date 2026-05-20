@@ -100,7 +100,7 @@ Exemplo de criação de produto:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/krabvalverde/api-node/edit/main/README.md
+git clone https://github.com/krabvalverde/api-node
 cd api-node
 ```
 
