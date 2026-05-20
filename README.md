@@ -12,7 +12,7 @@ Esta API simula um backend simples para gerenciamento de usuários e produtos. A
 
 ### Usuários
 
-- Criar usuario.
+- Criar usuário.
 - Listar todos os usuários.
 - Buscar usuário por ID.
 - Validar e-mail unico no cadastro.
