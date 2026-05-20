@@ -1,73 +1,73 @@
 # API Node
 
-API REST desenvolvida com Node.js, TypeScript, Express e Prisma ORM para fins de estudo. O projeto nao possui fins lucrativos e foi criado como pratica de estruturacao de uma API com camadas separadas, banco relacional e regras basicas de negocio.
+API REST desenvolvida com Node.js, TypeScript, Express e Prisma ORM para fins de estudo. O projeto não possui fins lucrativos e foi criado como prática de estruturação de uma API com camadas separadas, banco relacional e regras básicas de negócio.
 
-> Status: em desenvolvimento. A containerizacao com Docker esta planejada para uma proxima etapa.
+> Status: em desenvolvimento. A containerização com Docker esta planejada para uma próxima etapa.
 
 ## Sobre o projeto
 
-Esta API simula um backend simples para gerenciamento de usuarios e produtos. A ideia principal e estudar conceitos como rotas, controllers, services, repositories, DTOs, Prisma ORM, PostgreSQL e separacao de responsabilidades em uma aplicacao Node.js.
+Esta API simula um backend simples para gerenciamento de usuários e produtos. A ideia principal é estudar conceitos como rotas, controllers, services, repositories, DTOs, Prisma ORM, PostgreSQL e separação de responsabilidades em uma aplicação Node.js.
 
 ## Funcionalidades atuais
 
-### Usuarios
+### Usuários
 
 - Criar usuario.
-- Listar todos os usuarios.
-- Buscar usuario por ID.
-- Validar email unico no cadastro.
+- Listar todos os usuários.
+- Buscar usuário por ID.
+- Validar e-mail unico no cadastro.
 - Salvar senha com hash usando `bcrypt`.
-- Retornar dados do usuario sem expor a senha.
+- Retornar dados do usuário sem expor a senha.
 
 ### Produtos
 
 - Criar produto.
 - Listar todos os produtos.
-- Buscar produto por codigo de barras.
-- Validar codigo de barras unico.
+- Buscar produto por código de barras.
+- Validar código de barras único.
 
 ## Stack utilizada
 
 - **Node.js**: runtime JavaScript.
-- **TypeScript**: tipagem estatica e melhor organizacao do codigo.
+- **TypeScript**: tipagem estática e melhor organização do código.
 - **Express**: criacao das rotas HTTP.
 - **Prisma ORM**: acesso ao banco de dados e modelagem das entidades.
 - **PostgreSQL**: banco de dados relacional.
-- **bcrypt**: geracao de hash para senhas.
-- **dotenv**: gerenciamento de variaveis de ambiente.
-- **tsx**: execucao do projeto em modo desenvolvimento.
-- **Docker**: planejado para containerizacao futura da API e do ambiente.
+- **bcrypt**: geração de hash para senhas.
+- **dotenv**: gerenciamento de variáveis de ambiente.
+- **tsx**: execução do projeto em modo desenvolvimento.
+- **Docker**: planejado para containerização futura da API e do ambiente.
 
 ## Estrutura do projeto
 
 ```text
 src/
-  controllers/   # Entrada das requisicoes e respostas HTTP
-  dtos/          # Contratos de entrada e saida de dados
-  lib/           # Configuracoes compartilhadas, como Prisma Client
+  controllers/   # Entrada das requisições e respostas HTTP
+  dtos/          # Contratos de entrada e saída de dados
+  lib/           # Configurações compartilhadas, como Prisma Client
   models/        # Tipos baseados nos models do Prisma
-  repositories/  # Comunicacao com o banco de dados
-  routes/        # Definicao das rotas da API
-  services/      # Regras de negocio
-  app.ts         # Configuracao do Express
-  server.ts      # Inicializacao do servidor
+  repositories/  # Comunicação com o banco de dados
+  routes/        # Definição das rotas da API
+  services/      # Regras de negócio
+  app.ts         # Configuração do Express
+  server.ts      # Inicialização do servidor
 
 prisma/
-  schema.prisma  # Models e configuracao do banco
-  migrations/    # Historico de migrations
+  schema.prisma  # Models e configuração do banco
+  migrations/    # Histórico de migrations
 ```
 
 ## Rotas da API
 
-### Usuarios
+### Usuários
 
 | Metodo | Rota | Descricao |
 | --- | --- | --- |
-| `POST` | `/usuarios` | Cria um novo usuario |
-| `GET` | `/usuarios` | Lista todos os usuarios |
-| `GET` | `/usuarios/:id` | Busca um usuario pelo ID |
+| `POST` | `/usuarios` | Cria um novo usuário |
+| `GET` | `/usuarios` | Lista todos os usuários |
+| `GET` | `/usuarios/:id` | Busca um usuário pelo ID |
 
-Exemplo de criacao de usuario:
+Exemplo de criação de usuário:
 
 ```json
 {
@@ -79,13 +79,13 @@ Exemplo de criacao de usuario:
 
 ### Produtos
 
-| Metodo | Rota | Descricao |
+| Metodo | Rota | Descrição |
 | --- | --- | --- |
 | `POST` | `/produtos` | Cria um novo produto |
 | `GET` | `/produtos` | Lista todos os produtos |
-| `GET` | `/produtos/:codigoBarras` | Busca um produto pelo codigo de barras |
+| `GET` | `/produtos/:codigoBarras` | Busca um produto pelo código de barras |
 
-Exemplo de criacao de produto:
+Exemplo de criação de produto:
 
 ```json
 {
@@ -97,22 +97,22 @@ Exemplo de criacao de produto:
 
 ## Como executar localmente
 
-### 1. Clone o repositorio
+### 1. Clone o repositório
 
 ```bash
 git clone <url-do-repositorio>
 cd api-node
 ```
 
-### 2. Instale as dependencias
+### 2. Instale as dependências
 
 ```bash
 npm install
 ```
 
-### 3. Configure as variaveis de ambiente
+### 3. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na raiz do projeto com a URL de conexao do PostgreSQL:
+Crie um arquivo `.env` na raiz do projeto com a URL de conexão do PostgreSQL:
 
 ```env
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco"
@@ -131,34 +131,34 @@ npm run prisma:migrate
 npm run dev
 ```
 
-A API ficara disponivel em:
+A API ficara disponível em:
 
 ```text
 http://localhost:3333
 ```
 
-## Scripts disponiveis
+## Scripts disponíveis
 
 | Script | Descricao |
 | --- | --- |
 | `npm run dev` | Inicia o servidor em desenvolvimento com watch |
 | `npm run build` | Compila o TypeScript para JavaScript |
-| `npm start` | Executa a versao compilada em `dist/` |
+| `npm start` | Executa a versão compilada em `dist/` |
 | `npm run prisma:migrate` | Executa migrations do Prisma |
 | `npm run prisma:studio` | Abre o Prisma Studio |
 
 ## Docker
 
-O projeto ainda nao esta containerizado, mas o uso de Docker ja esta previsto no roadmap. A ideia e adicionar futuramente:
+O projeto ainda não está containerizado, mas o uso de Docker ja está previsto no roadmap. A ideia é adicionar futuramente:
 
 - `Dockerfile` para a API.
 - `docker-compose.yml` para subir API e PostgreSQL juntos.
-- Variaveis de ambiente preparadas para execucao em container.
+- Variáveis de ambiente preparadas para execução em container.
 
 ## Objetivo educacional
 
-Este projeto foi desenvolvido exclusivamente para estudo e pratica. Ele nao possui fins lucrativos e pode evoluir conforme novos conceitos forem sendo aplicados, como autenticacao, validacao de dados, testes automatizados, documentacao com Swagger e containerizacao com Docker.
+Este projeto foi desenvolvido exclusivamente para estudo e prática. Ele não possui fins lucrativos e pode evoluir conforme novos conceitos forem sendo aplicados, como autenticação, validação de dados, testes automatizados, documentação com Swagger e containerização com Docker.
 
-## Licenca
+## Licença
 
 Projeto sem fins lucrativos, criado para fins educacionais.
