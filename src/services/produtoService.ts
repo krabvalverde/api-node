@@ -20,5 +20,29 @@ export const produtoService = {
             descricao: novoProduto.descricao,
             unidade: novoProduto.unidade
         }
+    },
+
+    async listarTodos(): Promise<ProdutoResponseDTO[]> {
+        const produtos = await produtoRepository.listarTodos();
+        return produtos.map(p => ({
+            id: p.id,
+            codigoBarras: p.codigoBarras,
+            descricao: p.descricao,
+            unidade: p.unidade,
+        }));
+    },
+
+    async listar(id: string): Promise<ProdutoResponseDTO> {
+        const produto = await produtoRepository.buscarProduto(id);
+        if(!produto){   
+            throw new Error("Produto não encontrado!");
+        }
+
+        return {
+            id: produto.id,
+            codigoBarras: produto.codigoBarras,
+            descricao: produto.descricao,
+            unidade: produto.unidade
+        }
     }
 }

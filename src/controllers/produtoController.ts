@@ -14,5 +14,23 @@ export const produtoController = {
             }
             return res.status(500).json({ erro: 'Internal server error' })
         }
+    },
+
+    async listarProdutos(req: Request, res: Response) {
+        const produtos = await produtoService.listarTodos();
+        return res.json(produtos);
+    },
+
+    async listar(req: Request<{ id: string }>, res: Response) { 
+        try {
+            const { id } = req.params;
+            const produto = await produtoService.listar(id); 
+            return res.json(produto);
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(404).json({ erro: error.message })
+            }
+            return res.status(500).json({ erro: 'Internal server error' })      
+        }
     }
 }

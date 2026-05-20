@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { usuarioController } from "../controllers/usuarioController";
+import { usuarioController } from "../controllers/usuarioController.js";
 
-const usuarioRoute = Router()
+const usuarioRoute = Router();
 
-usuarioRoute.post('/', usuarioController.criarUsuario)
-usuarioRoute.get('/', usuarioController.listarUsuarios)
-usuarioRoute.get('/:id', usuarioController.listar)
+usuarioRoute.post('/', usuarioController.criarUsuario);
+usuarioRoute.get('/', usuarioController.listarUsuarios);
+usuarioRoute.get('/:id', usuarioController.listar);
 
 export { usuarioRoute }

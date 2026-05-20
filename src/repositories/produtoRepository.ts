@@ -13,5 +13,11 @@ export const produtoRepository = {
         return await prisma.produto.create({
             data: dados,
         })
-    }
+    },
+
+    async listarTodos(): Promise<Produto[]> {
+        return await prisma.produto.findMany({
+            orderBy: { codigoBarras: 'desc' },
+        })
+    },
  }
