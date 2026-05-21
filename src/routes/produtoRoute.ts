@@ -6,5 +6,7 @@ const produtoRoute = Router();
 produtoRoute.post('/', produtoController.criarProduto);
 produtoRoute.get('/', produtoController.listarProdutos);
 produtoRoute.get('/:id', produtoController.listar);
+produtoRoute.delete('/:codigoBarras', produtoController.deletar);
+produtoRoute.patch('/:id', produtoController.update)
 
 export { produtoRoute }
