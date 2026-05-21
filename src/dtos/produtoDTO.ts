@@ -13,7 +13,7 @@ export interface UpdateProdutoDTO {
 }
 
 export interface ProdutoResponseDTO {
-    id: string
+    id: number
     codigoBarras: string
     descricao: string
     unidade: string

@@ -18,7 +18,11 @@ export const usuarioController = {
 
     async listar(req: Request<{ id: string }>, res: Response) {
         try {
-            const { id } = req.params
+            const id = Number(req.params.id)
+            if (!Number.isInteger(id) || id <= 0) {
+                throw new Error('ID invalido')
+            }
+
             const usuario = await usuarioService.listar(id)
             return res.json(usuario)
         } catch (erro) {

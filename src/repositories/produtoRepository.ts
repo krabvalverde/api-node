@@ -1,4 +1,3 @@
-import type { Usuario } from "@prisma/client";
 import { prisma } from "../lib/prisma.js";
 import type { Produto } from "../models/Produto.js"
 

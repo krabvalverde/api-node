@@ -14,7 +14,7 @@ export const usuarioRepository = {
        }) 
     },
 
-    async buscarPorID(id: string): Promise<Usuario | null> {
+    async buscarPorID(id: number): Promise<Usuario | null> {
         return await prisma.usuario.findUnique({
             where: { id },
         })

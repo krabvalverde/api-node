@@ -35,7 +35,7 @@ export const usuarioService = {
         }))
     },
 
-    async listar(id: string): Promise<UsuarioResponseDTO> {
+    async listar(id: number): Promise<UsuarioResponseDTO> {
         const usuario = await usuarioRepository.buscarPorID(id)
         if (!usuario) {
             throw new Error('Usuário não encontrado')

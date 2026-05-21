@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Usuario {
-  id        String   @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   nome      String
   email     String   @unique
   senha     String
@@ -18,7 +18,7 @@ model Usuario {
 }
 
 model Produto {
-  id           String @id @default(uuid())
+  id           Int    @id @default(autoincrement())
   codigoBarras String @unique @map("codigo_barras")
   descricao    String 
   unidade      String

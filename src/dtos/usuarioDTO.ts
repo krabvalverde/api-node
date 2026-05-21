@@ -13,7 +13,7 @@ export interface UpdateUsuarioDTO {
 }
 
 export interface UsuarioResponseDTO {
-    id: string
+    id: number
     nome: string
     email: string
     criadoEm: Date
